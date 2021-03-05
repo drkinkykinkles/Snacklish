@@ -10,7 +10,7 @@ Credits:
     Nathan Healea - https://github.com/NathanHealea
  */
 
-package com.example.snacklish
+package com.drkinkykinkles.snacklish
 
 import android.app.Activity
 import android.content.ClipData

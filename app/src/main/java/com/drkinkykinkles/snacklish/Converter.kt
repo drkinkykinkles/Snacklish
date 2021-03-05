@@ -1,4 +1,4 @@
-package com.example.snacklish
+package com.drkinkykinkles.snacklish
 
 class Converter {
     companion object {
