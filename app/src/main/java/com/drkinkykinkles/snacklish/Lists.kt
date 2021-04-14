@@ -1,6 +1,6 @@
 package com.drkinkykinkles.snacklish
 
-fun GetBlacklist() = listOf(
+val BlackList = hashSetOf(
     "the",
     "of",
     "and",
@@ -50,9 +50,9 @@ fun GetBlacklist() = listOf(
     "by",
     "what",
     "me"
-).toSet()
+)
 
-fun GetFixedList() = mapOf(
+val FixedList = mapOf(
     "say" to "saytisfy",
     "better" to "treatter",
     "there" to "treatere",
@@ -110,7 +110,7 @@ fun GetFixedList() = mapOf(
     "have" to "havisfaction"
 )
 
-fun GetRuleList() = mapOf(
+val RuleList = mapOf(
     //Bite
     "[bcdfghjklmnpqrstvwxz](ight|ite)" to "bite", // consonant + ight or ite, replace with "bite"
 

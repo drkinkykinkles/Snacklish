@@ -3,33 +3,28 @@ package com.drkinkykinkles.snacklish
 class Converter {
     companion object {
         fun convert(text: String): String {
-            // Load in the lists we will use to manipulate the text
-            val blacklist = GetBlacklist()
-            val fixedList = GetFixedList()
-            val ruleList = GetRuleList()
-
             // Grab all individual words in the text and convert them
             val wordRegex = "[\\w']+".toRegex()
-            return text.replace(wordRegex) { result -> preserveCasing(result.value, convertToken(result.value.toLowerCase(), blacklist, fixedList, ruleList)) }
+            return text.replace(wordRegex) { result -> preserveCasing(result.value, convertToken(result.value.toLowerCase())) }
         }
 
         /**
          * Converts individual words into snacklish
          */
-        fun convertToken (token: String, blacklist: Set<String>, fixedList: Map<String, String>, ruleList: Map<String, String>): String {
+        fun convertToken (token: String): String {
             // Some simple words we do not want to replace
-            if (blacklist.contains(token)) {
+            if (BlackList.contains(token)) {
                 return token
             }
 
             // Some words we have specific replacements for
-            if (fixedList.containsKey(token)) {
-                return fixedList.getValue(token)
+            if (FixedList.containsKey(token)) {
+                return FixedList.getValue(token)
             }
 
             // Some words we can modify with special regulexes
             // Key order is randomized so we can get some waaacky results
-            for (rule in ruleList.map { it.key to it.value }.shuffled().toMap()) {
+            for (rule in RuleList.map { it.key to it.value }.shuffled().toMap()) {
                 if (rule.key.toRegex().containsMatchIn(token)) {
                     return rule.key.toRegex().replace(token, rule.value)
                 }
