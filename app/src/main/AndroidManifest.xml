@@ -17,6 +17,9 @@
                 <data android:mimeType="text/plain" />
             </intent-filter>
         </activity>
+        <autofill-service
+            android:supportsInlineSuggestions="true"/>
+
     </application>
 
 </manifest>
